@@ -33,6 +33,8 @@ func main() {
 	amount, gender := 25, "male"
 	var decimal, number float32 = 2.2222222, 1.0090
 	fmt.Println(amount, gender, number, decimal)
+	message := fmt.Sprintf("The amount is %d and the decimal is %f", amount, decimal)
+	fmt.Println(message)
 }
 
 /*
