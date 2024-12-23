@@ -17,6 +17,22 @@ func loopFunc(){
 	}
 }
 
+func getUserInfo(){
+	print("What's your name?: ")
+	var my_name string
+	fmt.Scanln(&my_name)
+	msg := fmt.Sprintf("You name is %s", my_name)
+	fmt.Print(msg)
+	print("\nWhat's the amount?: ")
+	var amount int
+	fmt.Scan(&amount)
+	amount_to_float := float64(amount)
+	fmt.Print(amount, amount_to_float)
+
+
+}
+
+// static-typed variable
 var name string = "Emmanuel"
 var is_cold = false
 
@@ -27,6 +43,7 @@ func main() {
 	loopFunc()
 	fmt.Println("My name is", name)
 
+	// dynamic-typed variable
 	age := 10
 	fmt.Println("Age: ", age)
 	fmt.Println("is_cold: ", is_cold)
@@ -35,6 +52,8 @@ func main() {
 	fmt.Println(amount, gender, number, decimal)
 	message := fmt.Sprintf("The amount is %d and the decimal is %f", amount, decimal)
 	fmt.Println(message)
+	fmt.Println("Memory Address of message is", &message)
+	getUserInfo()
 }
 
 /*
