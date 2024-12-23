@@ -13,10 +13,23 @@ func displayGrreetings() {
 func message() { fmt.Println("Hello!"); fmt.Println("My name is John."); };
 
 func loopFunc(){
-	ctr := 0
-	for ctr < 10 {
-		fmt.Println("ctr:", ctr)
-		ctr +=1
+	// ctr := 0
+	// for ctr < 10 {
+	// 	fmt.Println("ctr:", ctr)
+	// 	ctr +=1
+	// }
+
+	nums := []int{1, 2, 3, 4, 5} // slice
+	for index, value := range nums{
+		fmt.Printf("Index is %d and Value is %d\n", index, value)
+	}
+	for i := 1; i < 11; i++ {
+		// fmt.Println(i)
+		if i % 2 == 0 {
+			fmt.Printf("%d is an even number\n", i)
+		}else {
+			fmt.Printf("%d is an odd number\n", i)
+		}
 	}
 }
 
@@ -66,6 +79,9 @@ func arithmetic(){
 	fmt.Println(subtraction_msg)
 	fmt.Println(multiplication_msg)
 	fmt.Println(division_msg)
+	quantity := 100
+	fmt.Printf("quantity data type: %T", quantity)
+	// strconv.ParseFloat, strconv.Itoa
 }
 
 // static-typed variable
@@ -76,7 +92,7 @@ func main() {
 	fmt.Println("Hello, world!")
 	// displayGrreetings()
 	// message()
-	// loopFunc()
+	loopFunc()
 	fmt.Println("My name is", name)
 
 	// dynamic-typed variable
@@ -90,7 +106,7 @@ func main() {
 	// fmt.Println(message)
 	// fmt.Println("Memory Address of message is", &message)
 	// getUserInfo()
-	arithmetic()
+	// arithmetic()
 }
 
 /*
