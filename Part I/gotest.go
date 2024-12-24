@@ -5,6 +5,7 @@ import (
 	"strconv"
 	"math"
 	"math/rand"
+	// "time"
 )
 
 func displayGrreetings() {
@@ -102,6 +103,7 @@ func arithmetic(){
 var name string = "Emmanuel"
 var is_cold = false
 
+
 func validateGuess(user_guess int){
 	computer_number := rand.Intn(11)
 	// check if the user's guess is correct
@@ -113,23 +115,59 @@ func validateGuess(user_guess int){
 }
 
 func randomNumberGame(){
-	fmt.Print("Guess a random number from 1 - 10: ")
-	var user_number int
-	fmt.Scanln(&user_number)
-	valid_guess := true
-	for valid_guess{
+	for {
+		fmt.Print("Guess a random number from 1 - 10: ")
+		var user_number int
+		_, err := fmt.Scanln(&user_number)
+		if err != nil {
+			fmt.Println("Invalid input, kindly enter an integer from 1 - 10")
+			// clear the buffer to prevent infinite loop on invalid input
+			var discard string
+			fmt.Scanln(&discard)
+			continue
+		}
 		if (user_number < 0 || user_number > 10){
-			fmt.Println("Invalid enter a random number from 1 - 10")
+			fmt.Println("Invalid input, enter a random number from 1 - 10")
 			randomNumberGame()
 		} else{
 			validateGuess(user_number)
 			break
 		}
+		}
+}
+
+
+func generateTable(number int){
+	// display the multiplication table
+	fmt.Printf("Displaying Multiply Table %d\n", number)
+	for i := 1; i <= 20; i++ {
+		fmt.Printf("%d x %d = %d\n", number, i, number * i)
+	}
+}
+
+
+func multiplicationTable(){
+	// ask the user for a number
+	// prints out multiplication table for that number
+	for {
+		fmt.Printf("Enter a number to generate its multiplication table: ")
+		var number int
+		_, err := fmt.Scanln(&number)
+		if err != nil {
+			fmt.Println("Invalid, enter a valid integer")
+			var discard string
+			fmt.Scanln(&discard)
+		}
+		// call function to display the multiplication table
+		generateTable(number)
+		break
 	}
 }
 
 func main() {
 	fmt.Println("Hello, world!")
+	multiplicationTable()
+
 	// displayGrreetings()
 	// message()
 	// loopFunc()
@@ -147,8 +185,15 @@ func main() {
 	// fmt.Println("Memory Address of message is", &message)
 	// getUserInfo()
 	// arithmetic()
-	randomNumberGame()
+	// randomNumberGame()
+	// mannually handle seeding
+	// ns := rand.NewSource(time.Now().UnixNano())
+	// generator := rand.New(ns)
+	// fmt.Println(generator.Intn(100))
+	// fmt.Println(rand.Intn(100))
+
 }
+
 
 /*
 	ways to run the file: (1) complile and run --> go build gotest.go, then gotest, (2) run directly --> go run gotest.go
