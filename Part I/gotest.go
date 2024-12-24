@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"math"
+	"math/rand"
 )
 
 func displayGrreetings() {
@@ -80,20 +82,58 @@ func arithmetic(){
 	fmt.Println(multiplication_msg)
 	fmt.Println(division_msg)
 	quantity := 100
-	fmt.Printf("quantity data type: %T", quantity)
+	fmt.Printf("quantity data type: %T\n", quantity)
 	// strconv.ParseFloat, strconv.Itoa
+	fmt.Println(math.Pow(float64(int_first_number), 3))
+	fmt.Println(rand.Int())
+	fmt.Println(rand.Intn(11)) // random number from 0 - 10
+	num := 23.4567
+
+	// Round to 2 decimal places
+	rounded := math.Round(num*100) / 100
+
+	// Store in a float variable
+	var roundedFloat float64 = rounded
+
+	fmt.Println("Rounded float:", roundedFloat)
 }
 
 // static-typed variable
 var name string = "Emmanuel"
 var is_cold = false
 
+func validateGuess(user_guess int){
+	computer_number := rand.Intn(11)
+	// check if the user's guess is correct
+	if user_guess == computer_number{
+		fmt.Println("Correct!")
+	} else {
+		fmt.Println("Incorrect. The number was", computer_number)
+	}
+}
+
+func randomNumberGame(){
+	fmt.Print("Guess a random number from 1 - 10: ")
+	var user_number int
+	fmt.Scanln(&user_number)
+	valid_guess := true
+	for valid_guess{
+		if (user_number < 0 || user_number > 10){
+			fmt.Println("Invalid enter a random number from 1 - 10")
+			randomNumberGame()
+		} else{
+			validateGuess(user_number)
+			break
+		}
+	}
+}
+
 func main() {
 	fmt.Println("Hello, world!")
 	// displayGrreetings()
 	// message()
-	loopFunc()
-	fmt.Println("My name is", name)
+	// loopFunc()
+	// fmt.Println("My name is", name)
 
 	// dynamic-typed variable
 	// age := 10
@@ -107,6 +147,7 @@ func main() {
 	// fmt.Println("Memory Address of message is", &message)
 	// getUserInfo()
 	// arithmetic()
+	randomNumberGame()
 }
 
 /*
