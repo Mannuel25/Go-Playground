@@ -6,6 +6,7 @@ import (
 	"math"
 	"math/rand"
 	// "time"
+	"strings"
 )
 
 func displayGrreetings() {
@@ -14,6 +15,7 @@ func displayGrreetings() {
 
 // single-line function
 func message() { fmt.Println("Hello!"); fmt.Println("My name is John."); };
+
 
 func loopFunc(){
 	// ctr := 0
@@ -29,11 +31,17 @@ func loopFunc(){
 	for i := 1; i < 11; i++ {
 		// fmt.Println(i)
 		if i % 2 == 0 {
-			fmt.Printf("%d is an even number\n", i)
+			// fmt.Printf("%d is an even number\n", i)
+			goto MESSAGE1
 		}else {
-			fmt.Printf("%d is an odd number\n", i)
+			// fmt.Printf("%d is an odd number\n", i)
+			goto MESSAGE2
 		}
 	}
+	MESSAGE1:
+		fmt.Println("This is an even number")
+	MESSAGE2: 
+		fmt.Println("This is an odd number")
 }
 
 
@@ -148,14 +156,14 @@ func generateTable(number int){
 func switchCase() {
 	// color := "blue"
 	color, number := "green", 6
-	switch (color) {
-		case "red":
-			fmt.Println("It's red not blue")
-		case "blue":
-			fmt.Println("It's blue")
-		default:
-			fmt.Println("Uhmmm..no match found") // executes when no case matches
-	}
+	// switch (color) {
+	// 	case "red":
+	// 		fmt.Println("It's red not blue")
+	// 	case "blue":
+	// 		fmt.Println("It's blue")
+	// 	default:
+	// 		fmt.Println("Uhmmm..no match found") // executes when no case matches
+	// }
 
 	switch (number) {
 		case 7:
@@ -192,7 +200,17 @@ func switchCase() {
 			fallthrough 
 		default:
 			fmt.Println("no match found")
-		}
+	}
+
+	// using multiple expressions in a case
+	switch (color) {
+		case "red", "blue", "yellow":
+			fmt.Println(color, "is a primary color")
+		case "orange", "green", "violet":
+			fmt.Println(color, "is a secondary color")
+		default:
+			fmt.Println(color, "is not a primary or secondary color.")
+	}
 
 }
 
@@ -215,10 +233,52 @@ func multiplicationTable(){
 	}
 }
 
+
+func reverseString() {
+	// Ask the user for a word to reverse
+	var word string
+	reversedWord := ""
+	fmt.Print("Enter a word to reverse: ")
+	fmt.Scanln(&word)
+
+	// Iterate through the string in reverse order
+	for i := len(word) - 1; i >= 0; i-- {
+		reversedWord += string(word[i])
+	}
+
+	// Print the reversed word
+	fmt.Println("Reversed word:", reversedWord)
+}
+
+func urlShortner(){
+	// ask the user for a URL to shorten
+	fmt.Printf("Enter a URL to shorten: ")
+	var url, identifier string
+
+	fmt.Scanln(&url)
+	// get the last part of the url
+	url_parts := strings.Split(url, "/")
+	page_number := url_parts[len(url_parts)-1]
+	if len(page_number) == 1{
+		identifier = string(page_number[0]) + string(page_number[0])
+	} else if len(page_number) >= 2{
+		identifier = string(page_number[0]) + string(page_number[len(page_number)-1])
+	} else {
+		identifier = "mm" // dummy identifier
+	}
+	random_number := rand.Intn(99)
+	shortened_url := fmt.Sprintf("https://mannuel.com/%s/%d", identifier, random_number)
+	fmt.Println("Your shortened URL is:", shortened_url)
+
+}
+
+
 func main() {
 	fmt.Println("Hello, world!")
 	// multiplicationTable()
-	switchCase()
+	// switchCase()
+	// reverseString()
+	urlShortner()
 
 	// displayGrreetings()
 	// message()
