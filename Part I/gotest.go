@@ -145,6 +145,57 @@ func generateTable(number int){
 	}
 }
 
+func switchCase() {
+	// color := "blue"
+	color, number := "green", 6
+	switch (color) {
+		case "red":
+			fmt.Println("It's red not blue")
+		case "blue":
+			fmt.Println("It's blue")
+		default:
+			fmt.Println("Uhmmm..no match found") // executes when no case matches
+	}
+
+	switch (number) {
+		case 7:
+			fmt.Println("...", number, "...")
+			number -= 1
+			fallthrough // ensures the execution continues to the next case
+		case 6:
+			fmt.Println("...", number, "...")
+			number -= 1
+			fallthrough // ensures the execution continues to the next case
+		case 5:
+			fmt.Println("...", number, "...")
+			number -= 1
+			fallthrough 
+		case 4:
+			fmt.Println("...", number, "...")
+			number -= 1
+			fallthrough 
+		case 3:
+			fmt.Println("...", number, "...")
+			number -= 1
+			fallthrough 
+		case 2:
+			fmt.Println("...", number, "...")
+			number -= 1
+			fallthrough 
+		case 1:
+			fmt.Println("...", number, "...")
+			number -= 1
+			fallthrough 
+		case 0:
+			fmt.Println("...", number, "...")
+			number -= 1
+			fallthrough 
+		default:
+			fmt.Println("no match found")
+		}
+
+}
+
 
 func multiplicationTable(){
 	// ask the user for a number
@@ -166,7 +217,8 @@ func multiplicationTable(){
 
 func main() {
 	fmt.Println("Hello, world!")
-	multiplicationTable()
+	// multiplicationTable()
+	switchCase()
 
 	// displayGrreetings()
 	// message()
