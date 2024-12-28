@@ -36,6 +36,17 @@ func factorial(n int) int {
     return n * factorial(n- 1)
 }
 
+
+func fibonacci() func() int {
+    a, b := 0, 1
+    return func() int {
+        current := a   
+        a, b = b, a+b
+        return current
+    }
+}
+
+
 func main() {
 	// a := "elizabeth"
 	// DisplayUpper(a)
@@ -57,5 +68,15 @@ func main() {
 		return sum
 	}
 	fmt.Println("The sum of both numbers is",sumNums())
+	y, z := 10, 100
+	add := func() int {	// a closure
+		return y + z
+	}
+	fmt.Println(add())
+	fib := fibonacci()
+	// print the first 10 fibonacci numbers
+    for i := 0; i < 10; i++ {
+        fmt.Println(fib())
+    }
 }
 
