@@ -169,6 +169,7 @@ func is_leap_year(){
 	}
 }
 
+
 func is_palindrome(){
 	var word, reversed_word string
 	fmt.Println("Enter a word: ")
@@ -184,10 +185,54 @@ func is_palindrome(){
 }
 
 
+func is_prime(number int) bool {
+	if number < 2{
+		return false
+	}
+
+	for i := 2; i < number; i++{
+		if number % i == 0{
+			return false
+		}
+	}
+
+	return true
+
+}
 
 
+func prime_func(){
+	var number int
+	fmt.Println("Enter a number: ")
+	fmt.Scan(&number)
+	is_prime := is_prime(number)
+	if is_prime{
+		fmt.Printf("%d is a Prime Number", number)
+	}else{
+		fmt.Printf("%d is not a Prime Number", number)
+	}
+}
 
 
+func reverse_order(){
+	var numbers[] int
+	var input int
+
+	for {
+		fmt.Print("Enter a number (use 0 to stop): ")
+		fmt.Scan(&input)
+
+		if input == 0{
+			break
+		}
+		numbers = append(numbers, input)
+	}
+	fmt.Println("Slice:", numbers)
+
+	for i := len(numbers) - 1; i >= 0; i--{
+		fmt.Println(numbers[i])
+	}
+}
 
 
 
@@ -203,5 +248,7 @@ func main() {
 	// name_triangle()
 	// grade_calculator()
 	// is_leap_year()
-	is_palindrome()
+	// is_palindrome()
+	// prime_func()
+	reverse_order()
 }
