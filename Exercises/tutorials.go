@@ -11,7 +11,7 @@ func message() {
 	fmt.Scanln(&username)
 	message = fmt.Sprintf("Hi %s, how're you doing?", username)
 	fmt.Println(message)
-	// fmt.Println("Hi %s, how're you doing?")
+	// fmt.Println("Hi ", username, " how're you doing?")
 
 }
 
@@ -26,13 +26,15 @@ func room_area() {
 	fmt.Printf("The Area of the rectangle is: %.2f", area)
 }
 
+
 func positive_intgers() {
 	var number int
 	fmt.Print("Enter a number: ")
 	fmt.Scanln(&number)
 	sum_of_num := (number * (number + 1) / 2)
-	fmt.Println("The Sum of the First n PositiveIntegers:", sum_of_num)
+	fmt.Println("The Sum of the First n Positive Integers:", sum_of_num)
 }
+
 
 func even_odd_num(){
 	var num int
@@ -44,6 +46,7 @@ func even_odd_num(){
 		fmt.Println("\n\nOdd number")
 	}
 }
+
 
 func vowel_consonant(){
 	var letter string
@@ -104,6 +107,91 @@ func shapes(){
 }
 
 
+func name_triangle(){
+	var side_1, side_2, side_3 float64
+	fmt.Println("Enter side 1 of the triangle")
+	fmt.Scanln(&side_1)
+	fmt.Println("Enter side 2 of the triangle")
+	fmt.Scanln(&side_2)
+	fmt.Println("Enter side 3 of the triangle")
+	fmt.Scanln(&side_3)
+	if side_1 == side_2 && side_2 == side_3{
+		fmt.Println("Equilateral triangle")
+	}else if side_1 == side_2 || side_1 == side_3 || side_2 == side_3{
+		fmt.Println("Isosceles triangle")
+	// }else if side_1 != side_2 && side_1 != side_3 && side_2 != side_3{
+	// 	fmt.Println("Scalene triangle")
+	}else{
+		fmt.Println("Scalene triangle")
+	}
+}
+
+
+func grade_calculator(){
+	var score float64
+	for {
+		fmt.Print("Enter your score: ")
+		_, err := fmt.Scan(&score)
+		if err == nil{
+			break
+		}
+		var discard string
+		fmt.Scanln(&discard)
+
+		fmt.Println("Enter a valid score")
+	}
+	if score >= 70{
+		fmt.Println("Grade A")
+	}else if score > 60 && score <= 69{
+		fmt.Println("Grade B")
+	}else if score > 50 && score <= 59{
+		fmt.Println("Grade C")
+	}else if score > 45 && score <= 49{
+		fmt.Println("Grade E")
+	}else if score <= 44{
+		fmt.Println("Grade F")
+	}
+}
+
+
+func is_leap_year(){
+	var year int
+	fmt.Println("Enter a year: ")
+	fmt.Scan(&year)
+	if year % 400 == 0{
+		fmt.Println("Leap Year")
+	}else if year % 100 == 0{
+		fmt.Println("Not a Leap Year")
+	}else if year % 4 == 0{
+		fmt.Println("Leap Year")
+	}else {
+		fmt.Println("Not a Leap Year")
+	}
+}
+
+func is_palindrome(){
+	var word, reversed_word string
+	fmt.Println("Enter a word: ")
+	fmt.Scan(&word)
+	for i := len(word) - 1; i >= 0; i--{
+		reversed_word += string(word[i])
+	}
+	if word == reversed_word{
+		fmt.Print("Palindrome")
+	}else{
+		fmt.Print("Not a Palindrome")
+	}
+}
+
+
+
+
+
+
+
+
+
+
 
 func main() {
 	// message()
@@ -111,5 +199,9 @@ func main() {
 	// positive_intgers()
 	// even_odd_num()
 	// vowel_consonant()
-	shapes()
+	// shapes()
+	// name_triangle()
+	// grade_calculator()
+	// is_leap_year()
+	is_palindrome()
 }
