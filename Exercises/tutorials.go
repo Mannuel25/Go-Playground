@@ -283,6 +283,47 @@ func pointer_1(){
 		nums_pointer[val] = &nums[val]
 	}
 	fmt.Println(nums_pointer)
+	*nums_pointer[0] = 100
+	// fmt.Println(*nums_pointer)
+	fmt.Println(nums)
+}
+
+
+func isUpper(x *string) bool{
+	if strings.ToUpper(*x) == *x{
+		return true
+	}
+	return false
+}
+
+
+func switchCase(x *string){
+	*x = strings.ToUpper(*x)
+}
+
+func reverseArray(){
+	nums := [4] int {0, 1, 2, 3}
+	new_nums := [4]int{}
+	c := &nums
+	for i := 0; i < len(nums); i++{
+		a := (len(nums) - 1) - i
+		fmt.Println((len(nums) - 1) - i)
+		new_nums[i] = a
+		c[i] = a
+	}
+	fmt.Println(new_nums)
+	fmt.Println(*c, nums)
+
+}
+
+
+func testFunc(){
+	message := "HELLOO"
+	new_message := "hello"
+	response := isUpper(&message)
+	fmt.Println(response)
+	switchCase(&new_message)
+	fmt.Println(new_message)
 
 }
 
@@ -300,5 +341,7 @@ func main() {
 	// prime_func()
 	// reverse_order()
 	// trial()
-	pointer_1()
+	// pointer_1()
+	// testFunc()
+	reverseArray()
 }
