@@ -235,8 +235,56 @@ func reverse_order(){
 }
 
 
+func trial() {
+	var nums [5]int
+	for x := 4; x >= 1; x-- {
+		fmt.Println(x)
+		nums[4- x] = x
+	}
+	fmt.Println("Your array is:", nums)
+}
 
 
+// A pointer is variable that stores the memory address of another variable where the data is stored, instead of storing a value itself
+
+func pointer_1(){
+	// var a = 20 // holds value 20
+	// z := &a // holds the memory address of a
+	// var u *int
+	// u = &a
+	// fmt.Println(u)
+	// println(a)
+	// *z = 90 // changes the value of 20 to 90
+	// println(z)
+	// println(a)
+	// println(*z)
+	// var b *int
+	// fmt.Println(b)
+	// if b == nil{
+	// 	fmt.Println("B is nil")
+	// }else{
+	// 	fmt.Println("B isn't nill")
+	// }
+	// fmt.Println(u == z) // comparing 2 pointers
+	// p := &u
+	// fmt.Println(p)
+	// fmt.Println(*p)
+	// fmt.Println(u)
+	// println(b)
+	// c := 30
+	// d := &c
+	// println(c)
+	// println(d)
+	nums := [5] int {1,2,3,6,7}
+	fmt.Println(nums)
+	var nums_pointer [5] *int
+
+	for val := 0; val < 5; val++{
+		nums_pointer[val] = &nums[val]
+	}
+	fmt.Println(nums_pointer)
+
+}
 
 func main() {
 	// message()
@@ -250,5 +298,7 @@ func main() {
 	// is_leap_year()
 	// is_palindrome()
 	// prime_func()
-	reverse_order()
+	// reverse_order()
+	// trial()
+	pointer_1()
 }
